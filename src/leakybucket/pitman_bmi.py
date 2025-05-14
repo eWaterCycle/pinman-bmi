@@ -4,7 +4,7 @@ from leakybucket import utils
 from leakybucket.lumped_bmi import LumpedBmi
 
 
-class PinmanBmi(LumpedBmi):
+class PitmanBmi(LumpedBmi):
     """Demonstration of a minimal hydrological model.
 
     🌧️
@@ -38,7 +38,7 @@ class PinmanBmi(LumpedBmi):
         self.storage = 0  # [kg m-2 == m-1 (water depth equivalent)]
         self.discharge = 0  # [m d-1]
 
-        # The model parameters of the Pinman model:
+        # The model parameters of the Pitman model:
         #  Interception storage [mm].
         self.PI = self.config["interception storage"]
         #  Ratio of impervious to total area [-].

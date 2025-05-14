@@ -20,7 +20,7 @@ To be able to run the demo notebook, this has to be an environment with `ewaterc
 
 To implement your own model, clone or download this repository.
 
-You can use the [`LumpedBmiTemplate`](src/leakybucket/lumped_bmi.py) as a starting point. You can use the [LeakyBucket BMI implementation](src/leakybucket/pinman_bmi.py) as an example.
+You can use the [`LumpedBmiTemplate`](src/leakybucket/lumped_bmi.py) as a starting point. You can use the [LeakyBucket BMI implementation](src/leakybucket/pitman_bmi.py) as an example.
 
 ## Sharing your model: packaging it in a container 📦
 
