@@ -4,7 +4,7 @@ from leakybucket import utils
 from leakybucket.lumped_bmi import LumpedBmi
 
 
-class LeakyBucketBmi(LumpedBmi):
+class PinmanBmi(LumpedBmi):
     """Demonstration of a minimal hydrological model.
 
     🌧️
@@ -38,9 +38,31 @@ class LeakyBucketBmi(LumpedBmi):
         self.storage = 0  # [kg m-2 == m-1 (water depth equivalent)]
         self.discharge = 0  # [m d-1]
 
-        # The one model parameter is the 'leakiness' of the buckets:
-        #   the leakiness value is in [d-1].
-        self.leakiness = self.config["leakiness"]
+        # The model parameters of the Pinman model:
+        #  Interception storage [mm].
+        self.PI = self.config["interception storage"]
+        #  Ratio of impervious to total area [-].
+        self.AI = self.config["ratio of impervious to total area"]
+        #  Minimum catchment absorption rate [mm/month].
+        self.ZMIN = self.config["minimum catchment absorption rate"]
+        #  Maximum catchment absorption rate [mm/month].
+        self.ZMAX = self.config["maximum catchment absorption rate"]
+        #  Maximum moisture storage capacity [mm].
+        self.ST = self.config["maximum moisture storage capacity"]
+        #  Moisture storage capacity below which no runoff occurs [mm].
+        self.SL = self.config["moisture storage capacity below which no runoff occurs"]
+        #  Runoff from moisture storage at full capacity [mm/month].
+        self.FT = self.config["runoff from moisture storage at full capacity"]
+        #  Maximum groundwater runoff [mm/month].
+        self.GW = self.config["maximum groundwater runoff"]
+        #  Evaporation-moisture storage relationship parameter [-].
+        self.R = self.config["evaporation-moisture storage relationship parameter"]
+        #  Power of the moisture storage-runoff equation [-].
+        self.POW = self.config["power of the moisture storage-runoff equation"]
+        #  Lag for surface and soil moisture [months].
+        self.TL = self.config["lag for surface and soil moisture"]
+        #  Lag for groundwater runoff [months].
+        self.GL = self.config["lag for groundwater runoff"]
 
     def update(self) -> None:
         if self.current_timestep < self.end_timestep:
